@@ -2,10 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Services\MarkdownConverter;
 use AppBundle\Repositories\PostRepository;
 
@@ -26,9 +23,17 @@ class PostController extends Controller
 
         $body = $this->markdownConverter->toHtml($fileContent);
 
-        // replace this example code with whatever you need
         return $this->render('post/show.html.twig', [
-            'body' => $body
+            'body' => $body,
+        ]);
+    }
+
+    public function listAction()
+    {
+        $postNames = $this->postRepository->getNames();
+
+        return $this->render('post/list.html.twig', [
+            'postNames' => $postNames,
         ]);
     }
 }

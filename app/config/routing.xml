@@ -11,4 +11,8 @@
     <route id="public.post.show" path="/post/{postName}">
         <default key="_controller">AppBundle:Post:show</default>
     </route>
+
+    <route id="public.post.list" path="/posts">
+        <default key="_controller">AppBundle:Post:list</default>
+    </route>
 </routes>

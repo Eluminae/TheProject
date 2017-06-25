@@ -2,7 +2,6 @@
 
 namespace AppBundle\Services;
 
-
 class MarkdownConverter
 {
     private $parsedown;
