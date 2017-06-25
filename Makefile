@@ -31,7 +31,7 @@ phpunit: ./vendor/bin/phpunit
 # Symfony3.x app commands
 
 .PHONY: console
-pbc:
+console:
 	docker-compose run --rm php php bin/console $(cmd)
 
 default: console
