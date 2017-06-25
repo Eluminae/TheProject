@@ -1,0 +1,18 @@
+FROM php:7.1-fpm
+
+RUN apt-get update
+
+RUN apt-get install -y git wget libxml2-dev
+
+# php extensions
+
+RUN docker-php-ext-install xml
+
+# php.ini
+COPY php.ini /usr/local/etc/php/
+
+# install composer
+COPY install-composer.sh /tmp/install-composer.sh
+RUN chmod +x /tmp/install-composer.sh && \
+    bash /tmp/install-composer.sh
+VOLUME /root/.composer

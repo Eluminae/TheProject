@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: the-project-nginx
+    environment:
+      - VIRTUAL_HOST=the-project.docker
+      - PHP_CONTAINER_NAME=the-project-php
+      - SYMFONY_ENTRYPOINT=app_dev.php
+    volumes:
+      - ./docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+  php:
+    image: the-project/php:7.1-fpm
+    container_name: the-project-php
+    build:
+      context: docker/build/php7.1
+    volumes:
+      - ./:/var/www/html
+      - ~/.docker/ReedWade/TheProject/composer:/root/.composer
+
+networks:
+
+  default:
+    external:
+      name: dev
