@@ -3,10 +3,12 @@ FROM php:7.1-fpm
 RUN apt-get update
 
 RUN apt-get install -y git wget libxml2-dev
+RUN apt-get install -y zlib1g-dev
 
 # php extensions
 
 RUN docker-php-ext-install xml
+RUN docker-php-ext-install zip
 
 # php.ini
 COPY php.ini /usr/local/etc/php/
