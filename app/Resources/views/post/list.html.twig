@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for postName in postNames %}
-        <a href="{{ path('public.post.show', {postName: postName}) }}">{{ postName }}</a>
-    {% endfor %}
+    <article>
+        {% for postName in postNames %}
+            <a href="{{ path('public.post.show', {postName: postName}) }}">{{ postName }}</a>
+        {% endfor %}
+    </article>
 {% endblock %}

@@ -9,10 +9,19 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block header %}{% endblock %}
-        {% block nav %}{% endblock %}
-        {% block body %}{% endblock %}
-        {% block footer %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block header %}
+        {% endblock %}
+        {% block nav %}
+            <nav>
+                <a href="{{ path('public.index') }}">Homepage</a>
+                <a href="{{ path('public.post.list') }}">Posts</a>
+            </nav>
+        {% endblock %}
+        {% block body %}
+        {% endblock %}
+        {% block footer %}
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
