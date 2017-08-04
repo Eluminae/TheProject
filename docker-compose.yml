@@ -8,6 +8,8 @@ services:
       - VIRTUAL_HOST=the-project.docker
       - PHP_CONTAINER_NAME=the-project-php
       - SYMFONY_ENTRYPOINT=app_dev.php
+    volumes_from:
+      - php
     volumes:
       - ./docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
   php:
