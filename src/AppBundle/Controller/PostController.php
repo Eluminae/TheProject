@@ -3,37 +3,32 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Services\MarkdownConverter;
-use AppBundle\Repositories\PostRepository;
+use AppBundle\Post\PostRepository;
 
 class PostController extends Controller
 {
-    private $markdownConverter;
     private $postRepository;
 
-    public function __construct(MarkdownConverter $markdownConverter, PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository)
     {
-        $this->markdownConverter = $markdownConverter;
         $this->postRepository = $postRepository;
     }
 
-    public function showAction(string $postName)
+    public function showAction(string $fileName)
     {
-        $fileContent = $this->postRepository->getContentByPostName($postName);
-
-        $body = $this->markdownConverter->toHtml($fileContent);
+        $post = $this->postRepository->getOneByFileName($fileName);
 
         return $this->render('post/show.html.twig', [
-            'body' => $body,
+            'body' => $post->toHtml(),
         ]);
     }
 
     public function listAction()
     {
-        $postNames = $this->postRepository->getNames();
+        $posts = $this->postRepository->getAll();
 
         return $this->render('post/list.html.twig', [
-            'postNames' => $postNames,
+            'posts' => $posts,
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repositories;
+namespace AppBundle\Post;
 
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\Finder\Finder;
@@ -16,17 +16,17 @@ class PostRepository
         $this->finder = new Finder();
     }
 
-    public function getContentByPostName($postName)
+    public function getOneByFileName($fileName)
     {
-        $absPath = $this->postsRoot.'/'.$postName.'.md';
+        $absPath = $this->postsRoot.'/'.$fileName.'.md';
         if (!file_exists($absPath)) {
             throw new FileNotFoundException($absPath);
         }
 
-        return file_get_contents($absPath);
+        return new Post($fileName, file_get_contents($absPath));
     }
 
-    public function getNames()
+    public function getAll()
     {
         $this
             ->finder
@@ -36,12 +36,11 @@ class PostRepository
             ->sortByModifiedTime()
         ;
 
-        $postNames = [];
+        $posts = [];
         foreach ($this->finder->files() as $file) {
-            $postName[] = basename($file, '.md');
+            $posts[] = new Post(basename($file, '.md'), file_get_contents($file));
         }
-        rsort($postName);
 
-        return $postName;
+        return $posts;
     }
 }

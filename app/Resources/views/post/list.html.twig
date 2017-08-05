@@ -2,8 +2,8 @@
 
 {% block body %}
     <article>
-        {% for postName in postNames %}
-            <a href="{{ path('public.post.show', {postName: postName}) }}">{{ postName }}</a>
+        {% for post in posts %}
+            <a href="{{ path('public.post.show', {fileName: post.getFileName}) }}">{{ post.getFormatedTitle }}</a>
         {% endfor %}
     </article>
 {% endblock %}
