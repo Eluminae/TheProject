@@ -33,4 +33,9 @@ class Post
     {
         return $this->fileName;
     }
+
+    public function getSummary()
+    {
+        return substr($this->toHtml(), 0, 150);
+    }
 }
