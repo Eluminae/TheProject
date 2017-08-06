@@ -17,6 +17,7 @@ body {
 div#body-left {
     width: 13em;
     margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 div#body-right {
