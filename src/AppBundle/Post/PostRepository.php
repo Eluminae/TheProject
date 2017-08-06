@@ -16,12 +16,29 @@ class PostRepository
         $this->finder = new Finder();
     }
 
+    private function throwIfInvalidPost($postPath)
+    {
+        $articlePath = $postPath.'/article.md';
+        $titlePath = $postPath.'/title.md';
+        $summaryPath = $postPath.'/summary.md';
+
+        if (!file_exists($articlePath)) {
+            throw new FileNotFoundException($articlePath);
+        }
+
+        if (!file_exists($titlePath)) {
+            throw new FileNotFoundException($titlePath);
+        }
+
+        if (!file_exists($summaryPath)) {
+            throw new FileNotFoundException($summaryPath);
+        }
+    }
+
     public function getOneById($postId)
     {
         $absPath = $this->postsRoot.'/'.$postId;
-        if (!file_exists($absPath.'/article.md')) {
-            throw new FileNotFoundException($absPath);
-        }
+        $this->throwIfInvalidPost($absPath);
 
         $articlePath = $absPath.'/article.md';
         $titlePath = $absPath.'/title.md';
@@ -34,15 +51,19 @@ class PostRepository
     {
         $this
             ->finder
-            ->files()
+            ->directories()
             ->in($this->postsRoot)
-            ->name('article.md')
             ->sortByModifiedTime()
         ;
 
         $posts = [];
-        foreach ($this->finder->files() as $file) {
-            $posts[] = new Post(basename(dirname($file)), file_get_contents(dirname($file).'/article.md'), file_get_contents(dirname($file).'/title.md'), file_get_contents(dirname($file).'/summary.md'));
+        foreach ($this->finder->directories() as $directory) {
+            try {
+                $this->throwIfInvalidPost($directory);
+                $posts[] = new Post(basename($directory), file_get_contents($directory.'/article.md'), file_get_contents($directory.'/title.md'), file_get_contents($directory.'/summary.md'));
+            } catch (FileNotFoundException $e) {
+                // do nothing but don't add post cause missing file
+            }
         }
 
         return $posts;
