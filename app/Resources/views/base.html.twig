@@ -2,18 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}The Project - Another blog{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
     </head>
     <body>
         <div id="body-left">
             {% block header %}
                 <header>
-                    <img id="personal-picture" src="{{ asset('public/img/personal/eddie.jpg') }}" alt="Personal picture of Eddie Barraco" />
+                    <img id="personal-picture" src="{{ asset('public/img/personal/eddie-mini.jpg') }}" alt="Personal picture of Eddie Barraco" />
+                    <p><strong>Eddie Barraco</strong></p>
                     <ul id="personal-informations">
                         <li>Web development</li>
                         <li>Consulting</li>

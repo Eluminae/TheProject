@@ -1,6 +1,4 @@
 
-This is my first article and it's not the easier. I'd like to not fall in another stupid article from a vim hacker. I'd like to explain why I will stay on vim for probably a long time.
-
 ## The developers tool
 
 A developer must have tools to transform efficiently his reflections to algorithms and automates. A developer who sticks to binary codes will create faster programs but will be attached to the simplest.

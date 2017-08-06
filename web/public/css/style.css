@@ -1,3 +1,14 @@
+
+@font-face {
+    font-family: "Saira-Regular";
+    src: url(/public/fonts/Saira-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Saira-Bold";
+    src: url(/public/fonts/Saira-Bold.ttf);
+}
+
 body {
     display: flex;
     flex-wrap: wrap;
@@ -6,6 +17,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     background: #f2f6f8;
+
+    font-family: 'Saira-Regular', sans-serif;
+    color: rgba(0,0,0,0.85);
 
     background: rgb(255,255,255);
     background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(225,225,225,1) 0%, rgba(241,241,241,1) 66%, rgba(246,246,246,1) 100%);
@@ -51,6 +65,7 @@ ul#social-networks li {
 
 ul#social-networks img {
     width: 2em;
+    fill: rgba(0,0,0,0.85);
 }
 
 ul#personal-informations {
@@ -70,6 +85,14 @@ div#content {
     text-align: justify;
     border-left: 2px solid  #888888;
     box-shadow: 5px 5px 2px #888888;
+}
+
+div#content a {
+    text-decoration: none;
+}
+
+div#content h1,h2,h3,h4,h5,h6 {
+    font-family: 'Saira-Bold', sans-serif;
 }
 
 nav {
@@ -96,4 +119,6 @@ nav ul a {
     padding-bottom: 0.8em;
     text-decoration: none;
     color: #dfc48c;
+    font-weight: bold;
+    font-family: 'Saira-Bold', sans-serif;
 }

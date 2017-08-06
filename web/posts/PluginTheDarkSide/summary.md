@@ -1,1 +1,1 @@
-Plugins are dark side of the vim.
+Plugins are dark side of the vim force. Growing in the darkness. Feeding of your fears. If you lose attention, you'll be probably crushed into little inconsistent piece of developer. Let me tell you why.

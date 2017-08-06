@@ -1,1 +1,1 @@
-# Plugins, the dark side of the Vim
+# Plugins, the dark side of the Vim force
