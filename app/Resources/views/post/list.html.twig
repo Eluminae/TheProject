@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <article>
+    <ul id="post-summaries">
         {% for post in posts %}
-            <a href="{{ path('public.post.show', {postId: post.getId}) }}">{{ post.getFormatedTitle | raw }}</a>
-            <p>{{ post.getFormatedSummary | raw }}</p>
+            <li>
+                <article>
+                    <a href="{{ path('public.post.show', {postId: post.getId}) }}">{{ post.getFormatedTitle | raw }}</a>
+                    {{ post.getFormatedSummary | raw }}
+                    <a id="read-more-link" href="{{ path('public.post.show', {postId: post.getId}) }}">Read more...</a>
+                </article>
+            </li>
         {% endfor %}
-    </article>
+    </ul>
 {% endblock %}

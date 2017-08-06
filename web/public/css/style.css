@@ -95,6 +95,15 @@ div#content h1,h2,h3,h4,h5,h6 {
     font-family: 'Saira-Bold', sans-serif;
 }
 
+div#content ul#post-summaries {
+    list-style: none;
+    padding-left: 0;
+}
+
+div#content div#post-summary {
+    font-style: italic;
+}
+
 nav {
     background-color: rgba(0,0,0,0.85);
 }
