@@ -1,8 +1,98 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f2f6f8;
 
-article {
-    background-color: #FDE3A7;
+    background: rgb(255,255,255);
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(225,225,225,1) 0%, rgba(241,241,241,1) 66%, rgba(246,246,246,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(225,225,225,1) 0%,rgba(241,241,241,1) 66%,rgba(246,246,246,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(225,225,225,1) 0%,rgba(241,241,241,1) 66%,rgba(246,246,246,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 );
+}
+
+div#body-left {
+    width: 13em;
+    margin-right: 1em;
+}
+
+div#body-right {
+    flex: 1;
+}
+
+header {
+    text-align: center;
+    border-left: 2px solid  #888888;
+    border-top: 2px solid  #888888;
+    box-shadow: 5px 5px 2px #888888;
+    padding: 0.5em;
+}
+
+#personal-picture {
+    width: 7em;
+    margin-top: 1em;
+}
+
+ul#social-networks {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+ul#social-networks li {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+ul#social-networks img {
+    width: 2em;
+}
+
+ul#personal-informations {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+a#company-link {
+    text-decoration: none;
+}
+
+div#content {
+    padding: 1em;
+    text-align: justify;
+    border-left: 2px solid  #888888;
+    box-shadow: 5px 5px 2px #888888;
 }
 
 nav {
-    background-color: #e9d460;
+    background-color: rgba(0,0,0,0.85);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+nav ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul a {
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    text-decoration: none;
+    color: #dfc48c;
 }

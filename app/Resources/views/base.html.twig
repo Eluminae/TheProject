@@ -9,18 +9,52 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block header %}
-        {% endblock %}
-        {% block nav %}
-            <nav>
-                <a href="{{ path('public.index') }}">Homepage</a>
-                <a href="{{ path('public.post.list') }}">Posts</a>
-            </nav>
-        {% endblock %}
-        {% block body %}
-        {% endblock %}
-        {% block footer %}
-        {% endblock %}
+        <div id="body-left">
+            {% block header %}
+                <header>
+                    <img id="personal-picture" src="{{ asset('public/img/personal/eddie.jpg') }}" alt="Personal picture of Eddie Barraco" />
+                    <ul id="personal-informations">
+                        <li>Web development</li>
+                        <li>Consulting</li>
+                    </ul>
+                    <a id="company-link" href="https://idci-consulting.fr/">IDCI-Consulting</a>
+                    <ul id="social-networks">
+                        <li>
+                            <a href="https://www.facebook.com/eddie.erwan.barraco"><img src="{{ asset('public/img/socials/facebook-logo.svg') }}" alt="Facebook social link" /></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/eddie-barraco/"><img src="{{ asset('public/img/socials/linkedin-logo.svg') }}" alt="LinkedIn social link" /></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Eluminae/"><img src="{{ asset('public/img/socials/github-logo.svg') }}" alt="Github social link" /></a>
+                        </li>
+                        <li>
+                            <a href="mailto:eddiebarraco@live.fr"><img src="{{ asset('public/img/socials/email.svg') }}" alt="Email contact" /></a>
+                        </li>
+                    </ul>
+                </header>
+            {% endblock %}
+        </div>
+        <div id="body-right">
+            {% block nav %}
+                <nav>
+                    <ul>
+                        <li>
+                            <a id="nav-main-title" href="{{ path('public.index') }}">The Project</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('public.post.list') }}">Posts</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endblock %}
+            <div id="content">
+                {% block body %}
+                {% endblock %}
+            </div>
+            {% block footer %}
+            {% endblock %}
+        </div>
         {% block javascripts %}
         {% endblock %}
     </body>
