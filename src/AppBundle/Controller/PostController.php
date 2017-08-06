@@ -14,12 +14,14 @@ class PostController extends Controller
         $this->postRepository = $postRepository;
     }
 
-    public function showAction(string $fileName)
+    public function showAction(string $postId)
     {
-        $post = $this->postRepository->getOneByFileName($fileName);
+        $post = $this->postRepository->getOneById($postId);
 
         return $this->render('post/show.html.twig', [
-            'body' => $post->toHtml(),
+            'title' => $post->getFormatedTitle(),
+            'summary' => $post->getFormatedSummary(),
+            'body' => $post->getFormatedArticle(),
         ]);
     }
 

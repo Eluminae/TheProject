@@ -1,11 +1,7 @@
 
-What the point with vim ?
-=========================
-
 This is my first article and it's not the easier. I'd like to not fall in another stupid article from a vim hacker. I'd like to explain why I will stay on vim for probably a long time.
 
-The developers tool
---------------------
+## The developers tool
 
 A developer must have tools to transform efficiently his reflections to algorithms and automates. A developer who sticks to binary codes will create faster programs but will be attached to the simplest.
 
@@ -20,8 +16,7 @@ Next, they question me what is my core functionalities. I reply them that my cor
 
 And that's it. Ironically I already got all these functionalities just by terminal.
 
-Unix philosophy
---------------
+## Unix philosophy
 
 One of the most common opinion in open source is the Unix philosophy.
 "The Unix philosophy emphasizes building simple, short, clear, modular, and extensible code that can be easily maintained and repurposed by developers other than its creators. The Unix philosophy favors composability as opposed to monolithic design." Wikipedia.
@@ -37,8 +32,7 @@ The goals of this thinking by keeping tools separated are multiples :
 
 The Unix philosophy give you a lot of advantages. So how do we start ?
 
-Vim in center
--------------
+## Vim in center
 
 When I open my vim outside of my regular work place, I'm targeted like an alien. People think I'm hacking the NASA, people question me about my intention, people think they can't understand what I'm doing. Collaborators also question me about this strange thing. Why I stick with this ugly buttonless piece ? Why do not I use my mouse ? Mouse is faster in all way no ? How can I work without auto-completion (I do not but they don't see it).
 
@@ -51,21 +45,9 @@ Tabs are anti pattern. We prefer buffers. We do not like visual distractions. We
 
 So what IDE got if Vim is so well thought ? IDE will save you early times. Over.
 
-What Vim does that IDE can't ?
-----------------------------
+## What Vim does that IDE can't ?
 
 - Stay 100 efficient without graphical interface. I saved my computers dying with vim. When your graphical interface is dead, stay the terminal. You can too work in distant servers across ssh with vim. You can work with your smartphone connected to your distant computer. Terminals is stable, terminals is light, terminals focus on report only useful information. I like terminals.
 - Keep undo history just like forever. Go back in time, 5 minutes, 30 minutes, 5 hours, 5 months earlier. Keeping all changes in mind. I think you can forget git on personals projects. Mhh, let's forget this idea...
 - Be what you want. There is so many possibilities to customize Vim. Add syntax handling, customize the way Vim will indent one filetype, change how it will auto-complete one sentence. There is just no limit.
 
-Vim or Vim ?
-------------
-
-I made mistakes on my Vim way. In my early days with my Text Eddie-tor, like lot of Vimer, I used plugins. LOT of plugins. Plugins are the dark side of the force. "Does the dark side be the stronger ? No, no, no. Quicker, easier, more seductive." Master Yoda to Luke Skywalker.
-Plugins will give you unlimited power but, you'll lose some Vim advantages. You'll need your plugins to use Vim. You'll need NERDTreePlugin to surf your projects. You'll need Fugitive cause "It's faster than press Ctrl + Tab". Vim will become a monster thing that take 10 minutes to install all plugins with the Plug manager. Installing and compiling YouCompleteMe and FZF etc. It will take 3 second to swap buffers. Plugins incompatibility will throw errors.
-
-Let me tell you one thing. 99% of what plugins do, Vim already do. Fast file exploration is native with netrw. Fast auto-completion is native with Omnicomplete. Spell checking is native. Why do you need NERDTree that just can't delete multiple files in same times ? Why do you need this stupid thing that make appear distractive letters all around the screen to jump to another point ?
-Keep in mind the dark side is everywhere. Before installing plugins, re-think of what you really need ?
-My personal idea is to just install syntax based configuration. I override Html syntax to Html5 updates. I have build a twig template handler. I override Php Omnicomplete function to fit with new ctags norms. I have some little fixes to remove useless spaces or preserve screen position on buffer swap and some other things.
-
-But the think is : I do not judge other Vimer that stick with plugins cause this is the Unix philosophy. Use different tools, the tools you need, the tools you choose, the tools that make you gain times. Use what works for you. If stick with IDEs go for it. I just want to explain why I stick with Vim.

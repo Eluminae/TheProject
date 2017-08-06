@@ -16,14 +16,18 @@ class PostRepository
         $this->finder = new Finder();
     }
 
-    public function getOneByFileName($fileName)
+    public function getOneById($postId)
     {
-        $absPath = $this->postsRoot.'/'.$fileName.'.md';
-        if (!file_exists($absPath)) {
+        $absPath = $this->postsRoot.'/'.$postId;
+        if (!file_exists($absPath.'/article.md')) {
             throw new FileNotFoundException($absPath);
         }
 
-        return new Post($fileName, file_get_contents($absPath));
+        $articlePath = $absPath.'/article.md';
+        $titlePath = $absPath.'/title.md';
+        $summaryPath = $absPath.'/summary.md';
+
+        return new Post($postId, file_get_contents($articlePath), file_get_contents($titlePath), file_get_contents($summaryPath));
     }
 
     public function getAll()
@@ -32,13 +36,13 @@ class PostRepository
             ->finder
             ->files()
             ->in($this->postsRoot)
-            ->name('*.md')
+            ->name('article.md')
             ->sortByModifiedTime()
         ;
 
         $posts = [];
         foreach ($this->finder->files() as $file) {
-            $posts[] = new Post(basename($file, '.md'), file_get_contents($file));
+            $posts[] = new Post(basename(dirname($file)), file_get_contents(dirname($file).'/article.md'), file_get_contents(dirname($file).'/title.md'), file_get_contents(dirname($file).'/summary.md'));
         }
 
         return $posts;

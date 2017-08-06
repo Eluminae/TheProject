@@ -4,38 +4,56 @@ namespace AppBundle\Post;
 
 class Post
 {
-    private $fileName;
-    private $rawMarkdown;
-    private $formatedHtml;
+    private $id;
 
-    public function __construct(string $fileName, string $rawMarkdown)
+    private $rawArticle;
+    private $rawTitle;
+    private $rawSummary;
+
+    private $formatedArticle;
+    private $formatedTitle;
+    private $formatedSummary;
+
+    public function __construct(string $id, string $rawArticle, string $rawTitle, string $rawSummary)
     {
-        $this->fileName = $fileName;
-        $this->rawMarkdown = $rawMarkdown;
+        $this->id = $id;
+        $this->rawArticle = $rawArticle;
+        $this->rawTitle = $rawTitle;
+        $this->rawSummary = $rawSummary;
     }
 
-    public function toHtml()
+    public function getFormatedArticle()
     {
-        if (null === $this->formatedHtml) {
+        if (null === $this->formatedArticle) {
             $parsedown = new \Parsedown();
-            $this->formatedHtml = $parsedown->text($this->rawMarkdown);
+            $this->formatedArticle = $parsedown->text($this->rawArticle);
         }
 
-        return $this->formatedHtml;
-    }
-
-    public function getFileName()
-    {
-        return $this->fileName;
+        return $this->formatedArticle;
     }
 
     public function getFormatedTitle()
     {
-        return $this->fileName;
+        if (null === $this->formatedTitle) {
+            $parsedown = new \Parsedown();
+            $this->formatedTitle = $parsedown->text($this->rawTitle);
+        }
+
+        return $this->formatedTitle;
     }
 
-    public function getSummary()
+    public function getFormatedSummary()
     {
-        return substr($this->toHtml(), 0, 150);
+        if (null === $this->formatedSummary) {
+            $parsedown = new \Parsedown();
+            $this->formatedSummary = $parsedown->text($this->rawSummary);
+        }
+
+        return $this->formatedSummary;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }

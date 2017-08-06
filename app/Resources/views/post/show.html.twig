@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ title | raw }}
+    <content id="post-summary">
+        {{ summary | raw }}
+    </content>
     <article>
         {{ body | raw }}
     </article>
