@@ -32,6 +32,6 @@ phpunit: ./vendor/bin/phpunit
 
 .PHONY: console
 console:
-	docker-compose run --rm php php bin/console $(cmd)
+	docker-compose run --rm php php bin/console $(cmd) --env="prod"
 
 default: console

@@ -4,10 +4,13 @@ services:
   nginx:
     image: nginx:latest
     container_name: the-project-nginx
+    restart: always
     environment:
-      - VIRTUAL_HOST=the-project.docker
+      - VIRTUAL_HOST=www.the-project.eddiebarraco.fr,the-project.eddiebarraco.fr
+      - LETSENCRYPT_HOST=www.the-project.eddiebarraco.fr,the-project.eddiebarraco.fr
+      - LETSENCRYPT_EMAIL=eddiebarraco@live.fr
       - PHP_CONTAINER_NAME=the-project-php
-      - SYMFONY_ENTRYPOINT=app_dev.php
+      - SYMFONY_ENTRYPOINT=app.php
     volumes_from:
       - php
     volumes:
@@ -15,6 +18,7 @@ services:
   php:
     image: the-project/php:7.1-fpm
     container_name: the-project-php
+    restart: always
     build:
       context: docker/build/php7.1
     volumes:
@@ -25,4 +29,4 @@ networks:
 
   default:
     external:
-      name: dev
+      name: public
