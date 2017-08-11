@@ -8,7 +8,7 @@
         <default key="_controller">AppBundle:Default:index</default>
     </route>
 
-    <route id="public.post.show" path="/post/{postId}">
+    <route id="public.post.show" path="/posts/{postId}">
         <default key="_controller">AppBundle:Post:show</default>
     </route>
 
