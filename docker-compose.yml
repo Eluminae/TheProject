@@ -1,32 +1,39 @@
-version: "2"
+---
+version: '3'
 
 services:
-  nginx:
+  web:
     image: nginx:latest
-    container_name: the-project-nginx
-    restart: always
+    deploy:
+      labels:
+        traefik.frontend.rule: "Host:the-project.eddiebarraco.fr"
+        traefik.frontend.entryPoints: "https"
+        traefik.frontend.headers.SSLRedirect: "true"
+        traefik.docker.network: traefik_reverse-proxy
+        traefik.port: 80
     environment:
-      - VIRTUAL_HOST=www.the-project.eddiebarraco.fr,the-project.eddiebarraco.fr
-      - LETSENCRYPT_HOST=www.the-project.eddiebarraco.fr,the-project.eddiebarraco.fr
-      - LETSENCRYPT_EMAIL=eddiebarraco@live.fr
       - PHP_CONTAINER_NAME=the-project-php
       - SYMFONY_ENTRYPOINT=app.php
-    volumes_from:
-      - php
+    networks:
+      traefik_reverse-proxy: ~
+      app: ~
     volumes:
-      - ./docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - web-conf:/etc/nginx/conf.d
+      - ./:/var/www/html
   php:
-    image: the-project/php:7.1-fpm
-    container_name: the-project-php
-    restart: always
+    image: docker.misterbanal.net/reedwade/the-project-php:php7.1
     build:
       context: docker/build/php7.1
     volumes:
       - ./:/var/www/html
       - ~/.docker/ReedWade/TheProject/composer:/root/.composer
+    networks:
+      app: ~
+
+volumes:
+  web-conf: ~
 
 networks:
-
-  default:
-    external:
-      name: public
+  app: ~
+  traefik_reverse-proxy:
+    external: true
