@@ -6,9 +6,14 @@ services:
     image: nginx:latest
     deploy:
       labels:
-        traefik.frontend.rule: "Host:the-project.eddiebarraco.fr"
+        traefik.http.frontend.rule: "Host:the-project.eddiebarraco.fr"
+        traefik.http.frontend.entryPoints: "http"
+        traefik.http.frontend.redirect.entryPoint: "https"
+        traefik.http.port: 80
+        traefik.https.frontend.rule: "Host:the-project.eddiebarraco.fr"
+        traefik.https.frontend.entryPoints: "https"
+        traefik.https.port: 443
         traefik.docker.network: traefik_reverse-proxy
-        traefik.port: 80
     environment:
       - PHP_CONTAINER_NAME=the-project-php
       - SYMFONY_ENTRYPOINT=app.php
@@ -24,12 +29,13 @@ services:
       context: docker/build/php7.1
     volumes:
       - ./:/var/www/html
-      - ~/.docker/ReedWade/TheProject/composer:/root/.composer
+      - composer-data:/root/.composer
     networks:
       app: ~
 
 volumes:
   web-conf: ~
+  composer-data: ~
 
 networks:
   app: ~
