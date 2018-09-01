@@ -13,12 +13,12 @@ services:
         traefik.https.frontend.rule: "Host:the-project.eddiebarraco.fr"
         traefik.https.frontend.entryPoints: "https"
         traefik.https.port: 443
-        traefik.docker.network: traefik_reverse-proxy
+        traefik.docker.network: web-proxy
     environment:
       - PHP_CONTAINER_NAME=the-project-php
       - SYMFONY_ENTRYPOINT=app.php
     networks:
-      traefik_reverse-proxy: ~
+      web-proxy: ~
       app: ~
     volumes:
       - web-conf:/etc/nginx/conf.d
@@ -39,5 +39,5 @@ volumes:
 
 networks:
   app: ~
-  traefik_reverse-proxy:
+  web-proxy:
     external: true
