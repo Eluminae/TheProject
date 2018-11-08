@@ -24,7 +24,7 @@ services:
       - web-conf:/etc/nginx/conf.d
       - ./:/var/www/html
   php:
-    image: docker.misterbanal.net/reedwade/the-project-php:php7.1
+    image: gitlab-registry.eddiebarraco.fr/personal/the-project/php:php7.1
     build:
       context: docker/build/php7.1
     volumes:
